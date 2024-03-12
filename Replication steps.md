@@ -1,5 +1,5 @@
 ### 1. Clone subject applications
-The complete list of subjects (along with their GitHub URLs) used for the evaluation of *LeakPair* is available in the [evaluation results](https://github.com/Arooba-git/LeakPair/blob/master/Memory%20foot%20print%20evaluation%20results%20-%2025%20iterations.zip) file. You may clone the subjects one by one and follow the subsequent steps.
+The complete list of subjects (along with their GitHub URLs) used for the evaluation of *LeakPair* is available in the zipped folder of [Subjects](https://github.com/Arooba-git/leakpair-study-replication/blob/main/Subjects%20(LeakPair%20evaluation).zip). You may clone the subjects one by one and follow the subsequent steps.
 
 ### 2. Run the subject applications
 #### Installation and Build
@@ -15,7 +15,7 @@ SPA libraries are typically built and tested using [Storybook](https://storybook
 In order to answer RQ3 (*Do the patches by LeakPair break the functionality?*), in addition to a successful program build/compilation, we also need to track the test suite results before and after *LeakPair* changes (if such test scripts are provided in `package.json`). Hence, as the subject is running, open another terminal and execute the test script. In most applications, this script is simply `test`, so you may want to run the command `yarn test` or `npm run test`. To view the actual script, as well as verify if a test script is provided at all, please check the `package.json` file. Some projects also have end-to-end testing scripts (e2e). All such scripts should be run, and their results noted, in order to assess *LeakPair*'s impact on the program's functionality later on.
 
 ### 4. Run Memlab
-Once the subject is up and running, you can now install and run Memlab on your system, following their [official documentation](https://facebook.github.io/memlab/docs/intro). Please note that Memlab is a dynamic analysis tool; hence, it requires that the application under test be in a running state (either live or locally).
+Once the subject is up and running, you can now install and run Memlab on your system, following their [official documentation](https://facebook.github.io/memlab/docs/installation). Please note that Memlab is a dynamic analysis tool; hence, it requires that the application under test be in a running state (either live or locally).
 
 After ensuring Memlab's installation, you can run Memlab on the subject app by providing it with the absolute path to the scenario file:\
 `memlab run --scenario [path-to-the-scenario-file] -v`
@@ -26,7 +26,7 @@ After ensuring Memlab's installation, you can run Memlab on the subject app by p
      IMPORTANT: You may want to confirm that the initial (localhost) URL provided in the scenario file is the same as the one
      opened up in your browser after starting the app; otherwise, Memlab will throw an error.
 
-The complete list of scenario files for all the subject applications, is available in the [memlab-scenario-files](https://github.com/Arooba-git/LeakPair/blob/master/memlab-scenario-files.zip) zipped file. Please select the respective scenario file by matching the name, for e.g, `roosterjs-scenario.js` for **roosterjs** project, `angular-components-scenario.js` for **angular-components** project, and so on. 
+The complete list of scenario files for all the subject applications, is available in the zipped folder of [memlab-scenario-files](https://github.com/Arooba-git/leakpair-study-replication/blob/main/memlab-scenario-files.zip). Please select the respective scenario file by matching the name, for e.g, `roosterjs-scenario.js` for **roosterjs** project, `angular-components-scenario.js` for **angular-components** project, and so on. 
 
 ### 5. Take note of memory footprints
 On the completion of its execution, Memlab logs the detailed statistics of the memory footprint of the app, including the count of leaking objects, retainer clusters, and the final heap size. An example below:
@@ -36,7 +36,7 @@ On the completion of its execution, Memlab logs the detailed statistics of the m
 As you will discover in the documentation, Memlab also outputs the logs in a file format along with heap snapshots and some other meta data. However, for the evaluation of *LeakPair*, taking note of the count of leaking objects/clusters and the final heap size in the CLI would suffice.
 
 ### 6. Run LeakPair
-After noting the initial memory footprints of the subject, you may now stop the application. You would now run LeakPair on the subject. You should already be able to run LeakPair if you have Node version 14 or above installed in your system (refer to the [README](https://github.com/Arooba-git/LeakPair/blob/master/README.md) file for the command).
+After noting the initial memory footprints of the subject, you may now stop the application. You would now run LeakPair on the subject. You should already be able to run LeakPair if you have Node version 14 or above installed in your system (refer to the [README](https://github.com/Arooba-git/leakpair-study-replication) file for the command).
 
 You can view the changes made by *LeakPair* using any diff tool if you want. An example of the Subscriptions leak fix in GitHub Desktop is shown below:
 <img width="1178" alt="Screen Shot 2023-02-21 at 2 36 43 PM" src="https://user-images.githubusercontent.com/56495631/220335834-49359d08-2008-4c60-8872-07e2e09d0e66.png">
@@ -52,7 +52,7 @@ While the subject is still running, you can now run Memlab again with the same c
 
 ### 9. Take note of memory footprints (after *LeakPair* changes)
 #### RQ1: How effective is *LeakPair*?
-Take note of the count of leaking objects and the final heap size this time. As *LeakPair*  bases its efficacy on the reduction in the count of leaking objects or the heap size, at least one of them should show a noticeable reduction (in our experiments, the count of leaking objects frequently showed a more significant reduction).
+Take note of the count of leaking objects and the final heap size this time. As *LeakPair*  bases its efficacy on the reduction in the count of leaking objects or the heap size, at least one of them should show a noticeable reduction. You can compare your results with our evaluation results available in this [zipped folder of HTML files](https://github.com/Arooba-git/leakpair-study-replication/blob/main/Memory%20foot%20print%20evaluation%20results%20-%2025%20iterations.zip).
 
 #### RQ2: Are the patches by *LeakPair* acceptable? 
 As the review process is double-blinded, we plan to disclose the submitted PRs after the final decision to preserve anonymity, since the PRs were all created by the author's personal GitHub account (the status of the PRs at the time of submission, as well as the answer to this RQ are presented in Section 5.2 in the paper). 
