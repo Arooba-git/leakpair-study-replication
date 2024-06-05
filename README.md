@@ -13,6 +13,8 @@ Proactive repairing of memory leaks in Single Page Applications
 
       Now you can use `n 14.0.0` to install the supported version. Note that you can replace this version with any version higher than 14,  including `n latest`.&nbsp;
 
+(As an additional step, currently, after installing leakpair, you have to navigate to the folder where it is installed, and install the dependencies manually using `npm i`. This step will be removed once we identify and resolve the automatic-dependency-resolution issue)
+
 2. Once the supported version of node is installed, you can run *LeakPair* with the command `npx leakpair [path]` where `path` is the **absolute** path of the repository or file that you wish to repair for memory leaks. Note that *LeakPair* only supports `.js`, `.jsx`, `.ts` and `.tsx` files. That is, if you provide the path to a repository, it will only filter and process files with these extensions.
 
 3. By default, *LeakPair* will log the memory leak and repair statistics directly in the CLI. However, if you wish to store it in a file format, you can provide an optional argument for the output path: `npx leakpair [path-of-project-to-repair] [path-for-output]`
